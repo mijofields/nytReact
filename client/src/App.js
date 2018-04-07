@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import SearchBox from "./components/searchbox/searchbox";
 
 class App extends Component {
   render() {
@@ -8,12 +8,13 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src="NYTimes-banner.jpg" className="App-logo" alt="NYT" />
-          <h2>NYT News Scrape</h2>
-        </div>
-        <p className="App-intro">
-          An app using mongoDB, expressJS, reactJS and nodeJS to bring you content
+          <h2>News Search App</h2>
+          <p className="App-intro">
+          Using mongoDB, expressJS, reactJS and nodeJS to bring you content
           from the New York Times...
         </p>
+        </div>
+        <SearchBox />  
       </div>
     );
   }
