@@ -1,12 +1,11 @@
 import React, { Component } from "react";
+import API from "../../utils/API";
 
 class SearchBox extends Component {
-  // Setting the initial values of this.state.username and this.state.password
+  // Setting the initial values of this.state
   state = {
     searchterm: "",
     articles: "",
-    startdate: "",
-    enddate: ""
   };
 
   // handle any changes to the input fields
@@ -23,8 +22,11 @@ class SearchBox extends Component {
   // When the form is submitted, prevent the default event and alert the username and password
   handleFormSubmit = event => {
     event.preventDefault();
-    alert(`Search Term: ${this.state.searchterm}Records: ${this.state.records}\nStart Date: ${this.state.startdate}\nEnd Date: ${this.state.enddate}`);
-    this.setState({ searchterm: "", articles: "", startdate: "", enddate: "" });
+    console.log(`search term: ${this.state.searchterm}`);
+    API.search(this.state.searchterm);
+   
+    // alert(`Search Term: ${this.state.searchterm}\nRecords: ${this.state.articles}\nStart Date: ${this.state.startdate}\nEnd Date: ${this.state.enddate}`);
+    this.setState({ searchterm: "", articles: "" });
   };
 
   render() {
@@ -38,39 +40,40 @@ class SearchBox extends Component {
           placeholder="Enter a Search Term"
           name="searchterm"
           value={this.state.searchterm}
-          // onChange={this.handleInputChange}
+          onChange={this.handleInputChange}
         />
+        
         </div>
-        <div className="form-group m-1">
-        <label>Articles: {this.state.records}</label>
+        {/* <div className="form-group m-1">
+        <label>Articles: {this.state.articles}</label>
         <input
           type="number"
-          placeholder="How many articles?"
-          name="records"
+          // min="1"
+          // max="10"
+          placeholder="How many articles"
+          name="articles"
           value={this.state.articles}
-          // onChange={this.handleInputChange}
+          onChange={this.handleInputChange}
         />
-        </div>
-        <div className="form-group m-1">
+        </div> */}
+        {/* <div className="form-group m-1">
         <label>Start Date (optional): {this.state.startdate}</label>
         <input
           type="date"
-          placeholder="Enter a year"
-          name="startyear"
+          name="startdate"
           value={this.state.startdate}
-          // onChange={this.handleInputChange}
+          onChange={this.handleInputChange}
         />
-        </div>
-        <div className="form-group m-1">
+        </div> */}
+        {/* <div className="form-group m-1">
         <label>End Date (optional): {this.state.enddate}</label>
         <input
           type="date"
-          placeholder="Enter a year"
-          name="endyear"
+          name="enddate"
           value={this.state.enddate}
-          // onChange={this.handleInputChange}
+          onChange={this.handleInputChange}
         />
-        </div>       
+        </div>        */}
         <button onClick={this.handleFormSubmit}>Submit</button>
       </ form>
       </ div>
